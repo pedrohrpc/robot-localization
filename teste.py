@@ -1,14 +1,20 @@
-from Linha import Linha
+import cv2 as cv
+import numpy as np
+
+img = np.zeros((1000,1000))
+theta = np.pi/12
+rho = 500
+
+for i in range(3):
+    thetaX = theta*i
+    a = np.cos(thetaX)
+    b = np.sin(thetaX)
+    x0 = int(a * rho)
+    y0 = int(b * rho)
+    cv.circle(img,(x0,y0),5,255,5)
+
+cv.imshow("camadas",img)
 
 
-linha = Linha()
-
-linha.append(1,1,100,100)
-linha.append(10,10,160,160)
-linha.append(165,165,500,500)
-
-print(linha.getLinha(1))
-
-print(linha.contem(0,0,162,162,limite=5))
-
-print(linha.getLinhaFinal())
+cv.waitKey(0)
+cv.destroyAllWindows()
